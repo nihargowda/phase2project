@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2><center>Ticket Confirmation Page</center></h2>
+<jsp:include page="useroutput.jsp" ></jsp:include><br><br>
+<jsp:include page="flightdetails.jsp" ></jsp:include><br><br>
+TICKET CONFIRMED
+
+
+
+<br>
+THANK YOU 
+</body>
+</html>

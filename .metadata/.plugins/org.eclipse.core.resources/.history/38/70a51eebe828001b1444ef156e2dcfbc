@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<% 
+String fname= request.getParameter("fname");
+String sname= request.getParameter("sname");
+String mail= request.getParameter("mail");
+String phone=request.getParameter("phone");
+String address = request.getParameter("address");
+ out.print("Name : "+fname+""+&nbsp+sname+"<br>"); 
+ out.print("Phone : "+ phone+"<br>");
+
+
+
+
+
+
+
+
+
+
+
+%>
+
+</body>
+</html>

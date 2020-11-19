@@ -1,0 +1,59 @@
+package com.admin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+@WebServlet("/AdminUpdate")
+public class AdminUpdate extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public AdminUpdate() {
+        super();
+      
+    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String oldpassword = request.getParameter("oldpassword");
+		String newpassword = request.getParameter("newpassword");
+		String empty="";
+				SessionFactory factory= new Configuration().configure("hibernate.cfg.xml")
+						.addAnnotatedClass(AdminLogin.class).buildSessionFactory();
+				PrintWriter out= response.getWriter();
+				
+				Session session=factory.getCurrentSession();
+				try {
+					session.beginTransaction();
+			session.createQuery("update AdminLogin set password='"+newpassword+"'").executeUpdate();
+			session.getTransaction().commit();
+				List<AdminLogin> ls=session.createQuery("from AdminLogin a where a.username='admin'").getResultList();
+				   
+				for(AdminLogin al:ls) {
+				String oldpass=	al.getPassword();
+				
+				
+				if(oldpass.equals(oldpassword) && newpassword.length()>empty.length()) {
+					out.print("password updated");
+				}
+				else {
+				out.print("failed");
+				}
+				}
+		
+		
+	}
+				finally {
+					factory.close();
+				}
+					
+
+}}

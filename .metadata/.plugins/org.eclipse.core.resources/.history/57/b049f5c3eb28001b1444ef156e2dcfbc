@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="emptyerror.jsp" ></jsp:include>
+<form action="" method=post>
+<h4>Enter card details </h4>
+
+Select type of card: <input type="radio" name="cardtype" value="credit" >credit
+<input type="radio" name="cardtype" value="debit" >debit
+               
+<br>
+Name On Card : <input type="text"><br>
+Card Number :<input type="number"><br>
+Cvv :<input type="password"><br>
+Expiry Date <input type="date">
+
+
+
+
+
+
+
+</form>
+</body>
+</html>

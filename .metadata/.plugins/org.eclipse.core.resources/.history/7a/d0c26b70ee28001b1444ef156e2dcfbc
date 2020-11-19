@@ -1,0 +1,40 @@
+package com.airline;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Userservlet")
+public class Userservlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+   
+    public Userservlet() {
+        super();
+     
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String fname= request.getParameter("fname");
+		String sname= request.getParameter("sname");
+		String mail= request.getParameter("mail");
+		String phone=request.getParameter("phone");
+		String address = request.getParameter("address");
+		String empty="";
+		
+		
+		response.setContentType("text/html");
+		if(fname.equals(empty)|| sname.equals(empty)|| mail.equals(empty) || phone.equals(empty) || address.equals(empty)){
+			response.sendRedirect("emptyerror.jsp");
+		}
+		else{
+	response.sendRedirect("UserServlet.jsp");
+
+	}
+
+	}}

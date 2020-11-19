@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<% 
+String fname= request.getParameter("fname");
+String sname= request.getParameter("sname");
+String mail= request.getParameter("mail");
+String phone=request.getParameter("phone");
+String address = request.getParameter("address");
+String empty="";
+response.setContentType("text/html");
+if(fname.equals(empty)|| sname.equals(empty)|| mail.equals(empty) || phone.equals(empty) || address.equals(empty)){
+	response.sendRedirect("emptyerror.jsp");
+}else{
+	
+ out.print("Name : "+fname+"&nbsp"+sname+"<br>"); 
+ out.print("Phone : "+ phone+"<br>");
+out.print("E-mail :"+ mail);}
+
+
+
+
+
+
+
+
+
+
+
+
+%>
+<jsp:include page="payment.jsp"></jsp:include>
+</body>
+</html>

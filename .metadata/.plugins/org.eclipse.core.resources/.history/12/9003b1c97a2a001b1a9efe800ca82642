@@ -1,0 +1,66 @@
+package com.admin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AirAwayDetails extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public AirAwayDetails() {
+        super();
+       
+    }
+
+Connection con;
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String sourcesql= "SELECT *  FROM airlinedetails";
+		PrintWriter out= response.getWriter();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			 con= DriverManager .getConnection("jdbc:mysql://localhost:3307/airaway","root","");
+		} catch (ClassNotFoundException | SQLException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			Statement	s = con.createStatement();
+			ResultSet rs= s.executeQuery(sourcesql);
+			
+			while(rs.next()) {
+				out.print("ID :"+rs.getInt("id")+"<br>");
+				out.print("SOURCE :"+rs.getString("source")+"<br>");
+				out.print("DESTINATION :"+rs.getString("destination")+"<br>");
+				out.print("AIRLINE :"+rs.getString("airline")+"<br>");
+				out.print("PRICE :"+rs.getInt("price")+"<br>");
+				out.print("___________________________________"+"<br>");
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+			
+		
+		
+		
+
+		
+		
+		
+	
+	}
+
+}

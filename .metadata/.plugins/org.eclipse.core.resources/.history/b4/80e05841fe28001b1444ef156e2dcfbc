@@ -1,0 +1,49 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+String query="select * from airlinedetails where source= ? and destination=? ";
+Class.forName("com.mysql.jdbc.Driver");
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3307/airaway","root","");
+			PreparedStatement ps= con.prepareStatement(query,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			
+			String source=session.getAttribute("source").toString();
+			String destination=session.getAttribute("destination").toString();
+			int passengers=(int)session.getAttribute("passengers");
+			String date=session.getAttribute("date").toString();
+			
+			ps.setString(1, source);
+			ps.setString(2,destination);
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				String printsource=rs.getString("source").toUpperCase();
+				String printdestination=rs.getString("destination").toUpperCase();
+				String printairline= rs.getString("airline");
+				int printperpersonfare=rs.getInt("price");
+				int printtotalfare=rs.getInt("price")*passengers;
+		
+				out.print("Source :&nbsp"+printsource+"&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+				out.print("Destination :&nbsp"+printdestination+"<br><br>");
+				out.print("Airline :"+  printairline+"&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+				out.print("Travel fare per person :"+printperpersonfare+"<br><br>");
+				out.print("Number of passengers :"+passengers+"<br><br>");
+				
+				out.print("Total Ticket  Fare :"+printtotalfare+"<br><br>");
+				out.print("Date of Journey :"+date+""+"(yyyy-mm-dd)");}
+				%>
+			<br><h4>select <a href="/AirAway/userdetails.jsp">Continue</a> to proceed </h4>	
+		
+		<br><h4>select <a href="/AirAway/index.jsp">Home</a> to go back to home page</h4>		
+</body>
+</html>

@@ -1,0 +1,14 @@
+package com.admin;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="adminlogin")
+public class AdminLogin {
+	
+@Column(name="sl.no")	
+int slno;
+
+}

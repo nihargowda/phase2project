@@ -1,0 +1,29 @@
+package com.admin;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AirAwayDetails extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public AirAwayDetails() {
+        super();
+       
+    }
+
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3307/airaway","root","");
+		String sourcesql= "SELECT DISTINCT source FROM airlinedetails";
+
+		Statement s= con.createStatement();
+		ResultSet rs= s.executeQuery(sourcesql);
+	
+	}
+
+}

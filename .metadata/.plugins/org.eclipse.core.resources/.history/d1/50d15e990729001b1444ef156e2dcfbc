@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2><center>Ticket Confirmation Page</center></h2>
+<jsp:include page="useroutput.jsp" ></jsp:include><br><br>
+
+TICKET CONFIRMED
+<% 
+String source=session.getAttribute("source").toString();
+			String destination=session.getAttribute("destination").toString();
+			int passengers=(int)session.getAttribute("passengers");
+			String date=session.getAttribute("date").toString();
+			out.print("Source :&nbsp"+source+"&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+			out.print("Destination :&nbsp"+destination+"<br><br>");
+			out.print("Airline :"+  airline+"&nbsp&nbsp&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp");
+			out.print("Travel fare per person :"+printperpersonfare+"<br><br>");
+			out.print("Number of passengers :"+passengers+"<br><br>");
+			%>
+<br>
+THANK YOU 
+</body>
+</html>

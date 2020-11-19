@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3><center>Payment Gateway</center></h3>
+<jsp:include page="useroutput.jsp" ></jsp:include>
+<form action="ticketbooked.jsp" method=post>
+ENTER CARD DETAILS<br>
+Select type of card: <input type="radio" name="cardtype" value="credit" >credit
+<input type="radio" name="cardtype" value="debit" >debit
+               
+<br>
+Name On Card : <input type="text"><br>
+Card Number :<input type="number"><br>
+Cvv :<input type="password"><br>
+Expiry Date <input type="date">
+
+<input type="submit">
+
+
+
+
+
+</form>
+</body>
+</html>

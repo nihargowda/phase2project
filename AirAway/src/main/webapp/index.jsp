@@ -6,7 +6,7 @@
 <%@page import="java.sql.Connection"%>
 <html>
 
-<h2><center>WELCOME TO NIHAR'S AIRLINE TICKET BOOKING SYSTEM</center></h2>
+<h2><center>WELCOME TO FLYAWAY TICKET BOOKING SYSTEM</center></h2>
 
 <form action="/AirAway/FlightSearch"  method="post"  >
 
